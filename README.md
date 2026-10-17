@@ -75,10 +75,11 @@ There is no account, no subscription, no watermark, no analytics and no server o
 VideoDownloadStudio installs as an unpacked extension. This folder is ready to load as it is, with no build tools, npm or command line needed. It is not listed on the Chrome Web Store.
 
 1. **Download it.** Get `VideoDownloadStudio-<version>.zip` from the latest release on the [Releases](../../releases) page and unzip it. (On this page, **Code**, then **Download ZIP**, works too, as does `git clone`.)
-2. **Open Chrome's extensions page.** Go to `chrome://extensions` and switch on **Developer mode** in the top right corner.
-3. **Load it.** Click **Load unpacked** and choose the unzipped folder, the one that contains `manifest.json`.
-4. **Pin it.** Click the puzzle piece in Chrome's toolbar and pin VideoDownloadStudio, or press <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>D</kbd>.
-5. **Save something.** Open a page with a video and start playing it, then open the extension and click **Find Videos**. Chrome asks to let the extension read that site; approve it, choose a quality and click **Download**.
+2. **Give it a permanent home.** Move the unzipped folder somewhere you will keep it, such as your Documents folder, rather than a Downloads folder you clear out. Chrome runs the extension straight from this folder, so if you delete or move it, the extension stops working.
+3. **Open Chrome's extensions page.** Go to `chrome://extensions` and switch on **Developer mode** in the top right corner.
+4. **Load it.** Click **Load unpacked** and choose that folder, the one that contains `manifest.json`.
+5. **Pin it.** Click the puzzle piece in Chrome's toolbar and pin VideoDownloadStudio, or press <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>D</kbd>.
+6. **Save something.** Open a page with a video and start playing it, then open the extension and click **Find Videos**. Chrome asks to let the extension read that site; approve it, choose a quality and click **Download**.
 
 Requires Google Chrome 116 or newer.
 
