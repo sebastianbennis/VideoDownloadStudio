@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_appName__",
+  "version": "0.2.1",
+  "description": "__MSG_appDesc__",
+  "default_locale": "en",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "downloads",
+    "offscreen",
+    "sidePanel",
+    "webRequest",
+    "scripting",
+    "webNavigation",
+    "alarms"
+  ],
+  "optional_permissions": [
+    "notifications",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "VideoDownloadStudio",
+    "default_popup": "src/ui/panel.html",
+    "default_icon": {
+      "16": "assets/icon-16.png",
+      "32": "assets/icon-32.png",
+      "48": "assets/icon-48.png",
+      "128": "assets/icon-128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "src/ui/panel.html"
+  },
+  "icons": {
+    "16": "assets/icon-16.png",
+    "32": "assets/icon-32.png",
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; frame-src 'self'; child-src 'self'; base-uri 'none';",
+    "sandbox": "sandbox allow-scripts; default-src 'none'; script-src 'self' 'unsafe-eval'; connect-src 'none'; img-src 'none'; media-src 'none'; font-src 'none'; style-src 'self'; worker-src 'none'; frame-src 'none'; child-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';"
+  },
+  "incognito": "split",
+  "sandbox": {
+    "pages": [
+      "src/sandbox/botguard.html"
+    ]
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+D"
+      },
+      "description": "Open VideoDownloadStudio"
+    }
+  }
+}

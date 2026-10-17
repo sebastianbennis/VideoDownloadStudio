@@ -1,0 +1,14 @@
+youtubei.js@18.1.0 bundle/browser.js sha256-2f0006f1d5c554b27ef3756c62bf7c12d139772804b85ab147cbb16770055fba license MIT source git+https://github.com/LuanRT/YouTube.js.git
+youtubei.js@18.1.0 LICENSE sha256-bf82e28381c6256138322a79da2082db5ddb040b4b7009b520f08a419d722c69 license MIT source git+https://github.com/LuanRT/YouTube.js.git
+googlevideo@4.1.1 LICENSE sha256-69bb14fee2d102583d6cccdf1e0e2ced4d2bbfd3c42b172e0a9f4e32a9c48c88 license MIT source git+https://github.com/LuanRT/GoogleVideo.git
+bgutils-js@4.0.3 LICENSE sha256-69bb14fee2d102583d6cccdf1e0e2ced4d2bbfd3c42b172e0a9f4e32a9c48c88 license MIT source git+https://github.com/LuanRT/BgUtils.git
+@bufbuild/protobuf@2.16.0 package.json sha256-44218ea11ba904877bcbc9a22d42eb14b9df86df1490b2390e296348276049bf license (Apache-2.0 AND BSD-3-Clause) source https://github.com/bufbuild/protobuf-es.git
+@bufbuild/protobuf@2.16.0 upstream LICENSE vendor/youtube/bufbuild-protobuf-LICENSE.txt sha256-c04b4216f1cd4c5a4f7fb2f2a1b0ae70d847e9e0cac7c9dee9bf8cc03177c449
+BSD-3-Clause license text for @bufbuild/protobuf package license field vendor/youtube/BSD-3-Clause.txt sha256-a55ada1efba282bd8b56efc5f3e6110f8f920d0cae52946ff7cc5530dc6df58c
+fflate@0.8.3 LICENSE sha256-0a1df3a083d0c010560aa342e87959c8c1070e6fd54545741f083f22d0c8b551 license MIT source https://github.com/101arrowz/fflate
+meriyah@7.4.0 LICENSE.md sha256-e9a5df5a6ae5cd51ca430715f4c62fb5424946e8da07b7caa058a1ba0582a848 license ISC source git+https://github.com/meriyah/meriyah.git
+quickjs-emscripten@0.32.0 LICENSE sha256-3c6040aa318612a234cc951609b640c0c63d85ae5a98a9330d3116f1553a79db license MIT source https://github.com/justjake/quickjs-emscripten
+quickjs-emscripten-core@0.32.0 LICENSE sha256-3c6040aa318612a234cc951609b640c0c63d85ae5a98a9330d3116f1553a79db license MIT source https://github.com/justjake/quickjs-emscripten
+@jitl/quickjs-ffi-types@0.32.0 LICENSE sha256-3c6040aa318612a234cc951609b640c0c63d85ae5a98a9330d3116f1553a79db license MIT source https://github.com/justjake/quickjs-emscripten
+@jitl/quickjs-wasmfile-release-sync@0.32.0 LICENSE sha256-446a69ae534aa8612d8b16d3bfc670c5a5050597dca3ce9820441a60d5d04fbb license MIT source https://github.com/justjake/quickjs-emscripten
+@jitl/quickjs-wasmfile-release-sync@0.32.0 dist/emscripten-module.wasm sha256-105c3bed22d457e43e3d1c3c1c6959fda62a8fe06f0fc8a985303c3a2be72232 license MIT source https://github.com/justjake/quickjs-emscripten

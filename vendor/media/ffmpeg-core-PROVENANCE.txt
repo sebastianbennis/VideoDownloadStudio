@@ -1,0 +1,35 @@
+@ffmpeg/core 0.12.10 provenance for VideoDownloadStudio
+
+Runtime artifacts in this directory:
+- ffmpeg-core.js
+- ffmpeg-core.wasm
+
+NPM package metadata:
+- Package: @ffmpeg/core 0.12.10
+- NPM package page: https://www.npmjs.com/package/@ffmpeg/core/v/0.12.10
+- NPM tarball: https://registry.npmjs.org/@ffmpeg/core/-/core-0.12.10.tgz
+- NPM integrity: sha512-dzNplnn2Nxle2c2i2rrDhqcB19q9cglCkWnoMTDN9Q9l3PvdjZWd1HfSPjCNWc/p8Q3CT+Es9fWOR0UhAeYQZA==
+- NPM shasum: 3177e88852bfbfaad5d258e9e0ac1fd9dffd3223
+- NPM license field: GPL-2.0-or-later
+- NPM publish time for 0.12.10: 2025-01-07T10:13:14.328Z
+
+Corresponding upstream source and build recipe:
+- Repository: https://github.com/ffmpegwasm/ffmpeg.wasm
+- Correct source tag for @ffmpeg/core 0.12.10: https://github.com/ffmpegwasm/ffmpeg.wasm/tree/v12.15
+- Correct source tag commit: 71aa99d37c02a7b4c435275ca9ef50e612f6efa1
+- Build guide: https://github.com/ffmpegwasm/ffmpeg.wasm/blob/v12.15/apps/website/docs/contribution/core.md
+- Dockerfile: https://github.com/ffmpegwasm/ffmpeg.wasm/blob/v12.15/Dockerfile
+- Makefile: https://github.com/ffmpegwasm/ffmpeg.wasm/blob/v12.15/Makefile
+- Build scripts: https://github.com/ffmpegwasm/ffmpeg.wasm/tree/v12.15/build
+- Core package manifest: https://github.com/ffmpegwasm/ffmpeg.wasm/blob/v12.15/packages/core/package.json
+- Source archive manifest: docs/external/media-engine/source-archives.json in VideoDownloadStudio-0.2.1-source.zip, attached to the 0.2.1 release on GitHub
+
+Correction note:
+- The upstream v0.12.10 tag is not corresponding source for @ffmpeg/core 0.12.10. In that tag, packages/core/package.json declares @ffmpeg/core 0.12.6.
+- The npm tarball contains built dist files and package metadata, not full corresponding source.
+- The upstream v12.15 tag contains packages/core/package.json declaring @ffmpeg/core 0.12.10 and GPL-2.0-or-later.
+- The upstream v12.15 Dockerfile contains the Docker, Makefile and build scripts used to build @ffmpeg/core.
+- The upstream v12.15 Dockerfile uses Emscripten 3.1.40, FFmpeg n5.1.4, libvpx v1.13.1, LAME master, and other external media libraries listed in docs/external/media-engine/source-archives.json.
+- LAME is pinned as master in the Dockerfile, so the local archive records the current remote resolution, not proven publish-time source.
+- The recorded LAME commit is 2badea1974ae36cb8312afe99cff1e6b3b5decee, committed on 2020-10-29T11:19:54+08:00, before the @ffmpeg/core 0.12.10 NPM publish time of 2025-01-07T10:13:14.328Z.
+- zimg is cloned with --recursive by the Dockerfile. Its test/extra/googletest submodule is recorded separately as zimg-googletest in docs/external/media-engine/source-archives.json.

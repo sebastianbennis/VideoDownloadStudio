@@ -1,0 +1,349 @@
+/* VideoDownloadStudio panel: the photo lab. */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("./fonts/archivo-variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: block;
+}
+
+html, body { margin: 0; height: 100%; }
+body.vds { min-width: 320px; overflow: hidden; }
+html.is-popup, html.is-popup body { width: 420px; height: 600px; }
+
+.vds {
+  --creator-footer-height: 36px;
+  --field: #F2C94C;
+  --field-deep: #E5B935;
+  --print: #FFFDF6;
+  --ink: #1C1705;
+  --ink-2: #4A3E12;
+  --ink-3: #6B5B22;
+  --rule: rgba(28, 23, 5, .18);
+  --hover: rgba(28, 23, 5, .08);
+  --negative: #962B17;
+  --btn: #1C1705;
+  --btn-ink: #F2C94C;
+  --band: #1C1705;
+  --band-ink: #FFF6D8;
+  --band-ink-2: rgba(242, 201, 76, .86);
+  --band-accent: #F2C94C;
+  --paper-shadow: 0 1px 0 rgba(60, 40, 0, .25), 0 10px 18px -12px rgba(60, 40, 0, .55);
+  --menu-shadow: 0 0 0 .5px rgba(28, 23, 5, .22), 0 12px 30px -6px rgba(40, 28, 0, .45);
+  --display: "Archivo", system-ui, sans-serif;
+  --ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --spring: linear(0, 0.157, 0.438, 0.66, 0.808, 0.897, 0.948, 0.976, 0.99, 0.997, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  font: 13px/16px var(--ui);
+  color: var(--ink);
+  background: var(--field);
+  -webkit-font-smoothing: antialiased;
+}
+
+.vds[data-theme="dark"] {
+  --field: #231D09;
+  --field-deep: #2E260E;
+  --print: #EFE8D3;
+  --ink: #F7EBC0;
+  --ink-2: #CDBB82;
+  --ink-3: #9C8C57;
+  --rule: rgba(247, 235, 192, .16);
+  --hover: rgba(247, 235, 192, .08);
+  --negative: #F08A6E;
+  --btn: #F2C94C;
+  --btn-ink: #1C1705;
+  --band: #F2C94C;
+  --band-ink: #1C1705;
+  --band-ink-2: rgba(28, 23, 5, .78);
+  --band-accent: #1C1705;
+  --paper-shadow: 0 1px 0 rgba(0, 0, 0, .5), 0 10px 18px -12px rgba(0, 0, 0, .85);
+  --menu-shadow: 0 0 0 .5px rgba(0, 0, 0, .6), 0 12px 30px -6px rgba(0, 0, 0, .7);
+}
+
+.vds *, .vds *::before, .vds *::after { box-sizing: border-box; }
+.vds button, .vds input, .vds select, .vds textarea { font: inherit; color: inherit; }
+.vds button { cursor: default; }
+.vds svg.i { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.vds .trunc { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.vds .num { font-variant-numeric: tabular-nums; }
+.vds :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.vds [hidden] { display: none !important; }
+
+/* ---- Header: where you are, and three icon buttons ---- */
+.vds .top { flex: none; display: flex; align-items: center; gap: 4px; padding: 10px 10px 0 16px; }
+.vds .where { flex: 1; min-width: 0; padding-right: 8px; }
+.vds .where { display: flex; align-items: center; gap: 8px; }
+.vds .where .fav { width: 16px; height: 16px; flex: none; border-radius: 4px; object-fit: cover; display: grid; place-items: center; color: var(--ink-2); }
+.vds .where b { min-width: 0; font-weight: 600; }
+.vds .ib { width: 28px; height: 28px; border: 0; border-radius: 8px; padding: 0; display: grid; place-items: center; background: transparent; color: var(--ink); }
+.vds .ib:hover, .vds .ib.is-hover, .vds .ib[aria-expanded="true"] { background: var(--hover); }
+.vds .ib:active { background: var(--rule); }
+
+/* ---- Two tabs ---- */
+.vds .tabs { flex: none; display: flex; gap: 6px; padding: 12px 16px 0; }
+.vds .tab { height: 28px; padding: 0 12px; border: 0; border-radius: 14px; display: flex; align-items: center; gap: 6px; background: transparent; font-weight: 600; box-shadow: inset 0 0 0 1.5px var(--ink); }
+.vds .tab:hover { background: var(--hover); }
+.vds .tab.active, .vds .tab.is-on { background: var(--ink); color: var(--field); }
+.vds .tab[data-count]::after { content: attr(data-count); font-family: var(--display); font-stretch: 125%; font-weight: 800; font-size: 12px; font-variant-numeric: tabular-nums; }
+.vds .tab-settings { margin-left: auto; }
+
+/* ---- The scrolling list ---- */
+.vds .list { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding-bottom: 16px; scrollbar-width: thin; }
+.vds .label { margin: 24px 16px 6px; display: flex; align-items: baseline; gap: 8px; font-family: var(--display); font-stretch: 125%; font-weight: 700; font-size: 11px; line-height: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.vds .label .link { margin-left: auto; }
+.vds .link { font-stretch: normal; border: 0; padding: 2px 4px; margin: -2px -4px; border-radius: 4px; background: none; font-family: var(--ui); font-size: 11px; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--ink-2); text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--rule); }
+.vds .link:hover { color: var(--ink); text-decoration-color: currentColor; }
+
+/* ---- Prints ---- */
+.vds .print { position: relative; flex: none; background: var(--print); border-radius: 3px; box-shadow: var(--paper-shadow); }
+.vds .print .img { position: relative; overflow: hidden; background: var(--field-deep); height: 100%; }
+.vds .print img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.vds .print.is-blank .img { display: grid; place-items: center; color: var(--ink-2); background: var(--field-deep); }
+.vds .print.is-blank .img svg.i { width: 20px; height: 20px; stroke-width: 1.4; }
+.vds .print .dur { position: absolute; right: 6px; bottom: 6px; padding: 1px 5px; border-radius: 4px; background: rgba(10, 8, 2, .78); color: #fff; font-size: 11px; line-height: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+/* The signature: an undeveloped print clears as --p goes from 0 to 1. */
+.vds .print.is-developing img {
+  filter: sepia(calc(.9 * (1 - var(--p, 0)))) saturate(calc(.15 + .85 * var(--p, 0))) brightness(calc(1.4 - .4 * var(--p, 0))) contrast(calc(.45 + .55 * var(--p, 0)));
+  transition: filter 600ms var(--spring);
+}
+.vds .print.is-failed img { filter: grayscale(1) contrast(.75) brightness(1.08); }
+.vds .print .mark { position: absolute; right: -6px; top: -6px; width: 20px; height: 20px; border-radius: 10px; display: grid; place-items: center; background: var(--ink); color: var(--field); box-shadow: 0 0 0 2px var(--field); }
+.vds .print .mark svg.i { width: 12px; height: 12px; stroke-width: 2.2; }
+.vds .print .mark.is-negative { background: var(--negative); color: var(--print); }
+
+/* ---- The selected video ---- */
+.vds .video.is-selected { padding: 16px 16px 0; container-type: inline-size; }
+.vds .video.is-selected .print { padding: 6px 6px 7px; aspect-ratio: 376 / 185; width: 100%; }
+/* The preview sits inside .img, which already excludes the print's border, so it covers it exactly.
+   The video is pinned to that box (a grid item would grow to the video's own height and show only
+   its top), and shows its whole frame centred, so a portrait reel is not cropped to a strip. */
+.vds .video.is-selected .inline-preview { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(10, 8, 2, .55); }
+.vds .video.is-selected .inline-preview video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; display: block; }
+.vds .video.is-selected .inline-preview.hidden-preview { display: none; }
+.vds .preview-button { height: 28px; padding: 0 12px; border: 0; border-radius: 14px; display: inline-flex; align-items: center; gap: 6px; background: var(--print); color: #1C1705; font-weight: 600; }
+.vds .preview-status { color: #fff; font-size: 11px; font-weight: 600; }
+.vds .video-title { margin: 14px 0 0; font-family: var(--display); font-stretch: 125%; font-weight: 800; font-size: clamp(18px, 6cqi, 22px); line-height: 1.14; letter-spacing: -.02em; text-wrap: balance; overflow-wrap: anywhere; }
+.vds .file { margin-top: 8px; display: flex; align-items: center; gap: 6px; color: var(--ink-2); }
+.vds .file svg.i { width: 14px; height: 14px; }
+.vds .filename-input { flex: 1; min-width: 0; height: 24px; margin: 0 -6px; padding: 0 6px; border: 0; border-radius: 6px; background: transparent; color: var(--ink-2); font-size: 12px; text-overflow: ellipsis; }
+.vds .filename-input:hover { background: var(--hover); }
+.vds .filename-input:focus { background: var(--print); color: #1C1705; outline: 2px solid var(--ink); outline-offset: 0; }
+.vds .ctl { display: flex; gap: 8px; margin-top: 12px; container-type: inline-size; }
+@container (max-width: 300px) { .vds .pick .more { display: none; } }
+.vds .pick { position: relative; flex: 1; min-width: 0; height: 32px; border-radius: 8px; background: var(--print); color: #1C1705; display: flex; align-items: center; gap: 6px; padding: 0 8px 0 10px; }
+.vds .pick:hover { box-shadow: inset 0 0 0 1.5px #1C1705; }
+.vds .pick b { font-weight: 700; flex: none; }
+.vds .pick .more { color: #4A3E12; }
+.vds .pick svg.i { margin-left: auto; color: #4A3E12; }
+.vds .pick select { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: default; appearance: none; }
+.vds .split { position: relative; display: flex; flex: none; }
+.vds .go { height: 32px; border: 0; display: flex; align-items: center; gap: 6px; padding: 0 12px; border-radius: 8px 0 0 8px; background: var(--btn); color: var(--btn-ink); font-weight: 700; transition: transform 100ms; }
+.vds .go:hover { filter: brightness(1.25); }
+.vds .go:disabled, .vds .row-dl:disabled { opacity: .55; cursor: not-allowed; filter: none; transform: none; }
+.vds .go:disabled { border-radius: 8px; }
+.vds .empty-lock { width: 56px; height: 56px; margin: 8px auto 14px; border-radius: 28px; display: grid; place-items: center; box-shadow: inset 0 0 0 1.5px var(--ink); }
+.vds .empty-lock .i { width: 26px; height: 26px; }
+.vds .row-dl:disabled:hover { background: transparent; color: inherit; }
+.vds .go:active, .vds .go.is-press { transform: scale(.97); }
+.vds .action-menu > summary { list-style: none; height: 32px; width: 30px; display: grid; place-items: center; border-radius: 0 8px 8px 0; background: var(--btn); color: var(--btn-ink); box-shadow: inset 1px 0 0 color-mix(in srgb, var(--btn-ink) 35%, transparent); }
+.vds .action-menu > summary::-webkit-details-marker { display: none; }
+.vds .action-menu > summary:hover { filter: brightness(1.25); }
+.vds .action-menu[open] > summary { filter: brightness(1.4); }
+
+/* ---- Details (jargon lives here) ---- */
+.vds .candidate-details { margin: 14px 0 0; padding: 10px 12px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; border-radius: 8px; box-shadow: inset 0 0 0 1px var(--rule); font-size: 12px; line-height: 15px; }
+.vds .candidate-details dt { color: var(--ink-2); }
+.vds .candidate-details dd { margin: 0; min-width: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+
+/* ---- Other videos: rows ---- */
+.vds .video.row { display: flex; align-items: center; gap: 4px; margin: 0 8px; border-radius: 8px; }
+.vds .video.row:hover, .vds .video.row.is-hover { background: var(--hover); }
+.vds .row-main { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 6px 4px 6px 8px; border: 0; background: none; text-align: left; border-radius: 8px; }
+.vds .row-main .print { width: 64px; height: 40px; padding: 3px; }
+.vds .row-text { flex: 1; min-width: 0; }
+.vds .row-text b { display: block; font-weight: 600; }
+.vds .row-text small { display: block; margin-top: 2px; font-size: 11px; line-height: 14px; color: var(--ink-2); }
+.vds .row-dl { flex: none; width: 28px; height: 28px; margin-right: 8px; border: 0; border-radius: 14px; padding: 0; display: grid; place-items: center; background: transparent; box-shadow: inset 0 0 0 1.5px var(--ink); }
+.vds .row-dl:hover { background: var(--ink); color: var(--field); }
+
+/* ---- Paste a link ---- */
+.vds .paste { margin: 12px 16px 0; height: 32px; border-radius: 8px; display: flex; align-items: center; gap: 8px; padding: 0 4px 0 10px; box-shadow: inset 0 0 0 1.5px var(--rule); color: var(--ink-2); }
+.vds .paste:focus-within { box-shadow: inset 0 0 0 1.5px var(--ink); background: var(--print); color: #1C1705; }
+.vds .paste input { flex: 1; min-width: 0; height: 100%; border: 0; background: transparent; outline: none; }
+.vds .paste input::placeholder { color: var(--ink-2); }
+.vds .paste:focus-within input::placeholder { color: #6B5B22; }
+.vds .paste button { height: 24px; padding: 0 10px; border: 0; border-radius: 6px; background: var(--btn); color: var(--btn-ink); font-weight: 700; }
+.vds .paste input:placeholder-shown + button { display: none; }
+
+/* ---- The developing band ---- */
+.vds .band { position: absolute; z-index: 10; left: 0; right: 0; bottom: var(--creator-footer-height); display: flex; align-items: center; gap: 12px; padding: 10px 16px 12px; background: var(--band); color: var(--band-ink); }
+.vds .band::before { content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: calc(var(--p, 0) * 100%); background: var(--band-accent); transition: width 600ms var(--spring); }
+.vds .band .print { width: 52px; height: 32px; padding: 2px; box-shadow: none; }
+.vds .list.has-band { padding-bottom: 76px; }
+.vds .band-text { flex: 1; min-width: 0; }
+.vds .band-text small { display: block; font-size: 11px; line-height: 14px; font-weight: 600; color: var(--band-ink-2); }
+.vds .band-text b { display: block; font-weight: 600; }
+.vds .band .ib { color: var(--band-accent); }
+.vds .band .ib:hover { background: color-mix(in srgb, var(--band-accent) 18%, transparent); }
+.vds .band .pct { font-family: var(--display); font-stretch: 125%; font-weight: 800; font-size: 22px; line-height: 25px; letter-spacing: -.02em; font-variant-numeric: tabular-nums; color: var(--band-accent); }
+
+/* ---- Downloads ---- */
+.vds .job { display: flex; align-items: flex-start; gap: 12px; margin: 0 8px; padding: 10px 8px; border-radius: 8px; }
+.vds .job + .job { border-top: 1px solid var(--rule); border-radius: 0; }
+.vds .job .print { width: 80px; height: 50px; padding: 3px; margin-top: 2px; }
+.vds .job-text { flex: 1; min-width: 0; }
+.vds .job-text b { display: block; font-weight: 600; }
+.vds .job-text small { display: block; margin-top: 2px; font-size: 11px; line-height: 14px; color: var(--ink-2); }
+.vds .job-text .error { color: var(--negative); font-weight: 500; }
+.vds .job .progress { height: 3px; margin-top: 8px; border-radius: 2px; background: var(--rule); overflow: hidden; }
+.vds .job .progress span { display: block; height: 100%; background: var(--ink); transition: width 600ms var(--spring); }
+.vds .job-side { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.vds .job-side .pct { font-family: var(--display); font-stretch: 125%; font-weight: 800; font-size: 22px; line-height: 25px; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.vds .job-actions { display: flex; gap: 6px; margin-top: 8px; }
+.vds .btn { height: 24px; padding: 0 10px; border: 0; border-radius: 6px; display: inline-flex; align-items: center; gap: 5px; background: transparent; font-size: 12px; font-weight: 600; box-shadow: inset 0 0 0 1.5px var(--ink); }
+.vds .btn:hover { background: var(--hover); }
+.vds .btn.is-primary { background: var(--btn); color: var(--btn-ink); box-shadow: none; }
+.vds .btn.is-primary:hover { filter: brightness(1.25); }
+.vds .btn.is-quiet { box-shadow: none; color: var(--ink-2); }
+.vds .btn.is-quiet:hover { color: var(--ink); }
+.vds .hist { display: flex; align-items: baseline; gap: 12px; margin: 0 8px; padding: 6px 8px; border-radius: 8px; }
+.vds .hist b { flex: 1; min-width: 0; font-weight: 500; }
+.vds .hist small { flex: none; font-size: 11px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.vds .quiet-note { margin: 4px 16px 0; font-size: 12px; line-height: 16px; color: var(--ink-2); }
+
+/* ---- Menus ---- */
+.vds .menu { position: absolute; z-index: 20; min-width: 240px; padding: 5px; border-radius: 10px; background: var(--print); color: #1C1705; box-shadow: var(--menu-shadow); font-size: 13px; line-height: 16px; }
+.vds .menu .menu-item { width: 100%; height: 24px; border: 0; border-radius: 5px; display: flex; align-items: center; gap: 8px; padding: 0 10px 0 24px; position: relative; background: none; text-align: left; white-space: nowrap; color: #1C1705; }
+.vds .menu .menu-item:hover, .vds .menu .menu-item.is-hover, .vds .menu .menu-item:focus-visible { background: #1C1705; color: #FFF6D8; outline: none; }
+.vds .menu .menu-item:disabled { color: #8A7A45; }
+.vds .menu .menu-item .key { margin-left: auto; padding-left: 16px; color: #6B5B22; font-variant-numeric: tabular-nums; }
+.vds .menu .menu-item:hover .key, .vds .menu .menu-item.is-hover .key { color: rgba(255, 246, 216, .8); }
+.vds .menu .menu-item.is-checked::before { content: ""; position: absolute; left: 9px; top: 7px; width: 8px; height: 4px; border-left: 1.7px solid currentColor; border-bottom: 1.7px solid currentColor; transform: rotate(-45deg); }
+.vds .menu .menu-sep { height: 1px; margin: 5px 10px; border: 0; padding: 0; background: rgba(28, 23, 5, .14); }
+.vds .menu .menu-head { padding: 4px 10px 2px 24px; font-size: 11px; line-height: 14px; font-weight: 600; color: #5A4C1A; }
+.vds .action-menu .menu { right: 0; top: calc(100% + 6px); }
+.vds .action-menu .menu.is-up { top: auto; bottom: calc(100% + 6px); }
+
+/* ---- Notice ---- */
+.vds .creator-footer { flex: none; height: var(--creator-footer-height); display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; border-top: 1px solid var(--rule); color: var(--ink-2); font-size: 11px; line-height: 16px; white-space: nowrap; }
+.vds .creator-footer a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; border-radius: 2px; }
+.vds .creator-footer a:hover, .vds .creator-footer a:focus-visible { color: var(--ink); text-decoration-color: currentColor; }
+
+.vds .notice { position: absolute; z-index: 30; left: 16px; right: 16px; bottom: calc(var(--creator-footer-height) + 16px); padding: 9px 12px; border-radius: 8px; background: var(--btn); color: var(--btn-ink); font-weight: 600; box-shadow: var(--menu-shadow); }
+.vds .notice.is-error { background: var(--negative); color: var(--print); }
+.vds .notice.hidden { display: none; }
+
+/* ---- Empty and first run ---- */
+.vds .empty { padding: 28px 16px 8px; }
+.vds .empty .fan { position: relative; height: 128px; margin-bottom: 22px; }
+.vds .empty .fan .print { position: absolute; top: 8px; width: 164px; height: 104px; padding: 5px 5px 6px; }
+.vds .empty .fan .print:nth-child(1) { left: 8px; transform: rotate(-7deg); }
+.vds .empty .fan .print:nth-child(2) { left: 96px; transform: rotate(4deg); top: 2px; }
+.vds .empty .fan .print:nth-child(3) { left: 184px; transform: rotate(-2deg); top: 12px; }
+/* Still looking: light sweeps across the blank prints in turn, like prints developing in a tray. */
+.vds .empty.is-searching .fan .print .img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 25%, rgba(255, 255, 255, .45) 50%, transparent 75%); transform: translateX(-100%); animation: vds-develop 1.8s ease-in-out infinite; }
+.vds .empty.is-searching .fan .print:nth-child(2) .img::after { animation-delay: .3s; }
+.vds .empty.is-searching .fan .print:nth-child(3) .img::after { animation-delay: .6s; }
+@keyframes vds-develop { 60%, 100% { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { .vds .empty.is-searching .fan .print .img::after { animation: none; transform: none; opacity: .35; } }
+.vds .empty h2 { margin: 0; font-family: var(--display); font-stretch: 125%; font-weight: 800; font-size: 30px; line-height: 32px; letter-spacing: -.025em; text-wrap: balance; }
+.vds .empty h2.is-small { font-size: 22px; line-height: 25px; letter-spacing: -.02em; }
+.vds .empty p { margin: 10px 0 0; max-width: 34em; color: var(--ink-2); }
+.vds .empty .cta { margin-top: 18px; height: 36px; padding: 0 16px; border: 0; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px; background: var(--btn); color: var(--btn-ink); font-weight: 700; font-size: 14px; }
+.vds .empty .cta:hover { filter: brightness(1.25); }
+.vds .empty .paste { margin: 22px 0 0; }
+
+/* ---- Settings ---- */
+.vds .settings-head { flex: none; display: flex; align-items: center; gap: 8px; padding: 12px 12px 0 16px; }
+.vds .settings-head h2 { flex: 1; margin: 0; font-family: var(--display); font-stretch: 125%; font-weight: 800; font-size: 22px; line-height: 28px; letter-spacing: -.02em; }
+.vds .group { margin: 0 16px; }
+.vds .field { display: flex; align-items: center; gap: 12px; min-height: 36px; padding: 4px 0; }
+.vds .field + .field { border-top: 1px solid var(--rule); }
+.vds .field > span { flex: 1; min-width: 0; }
+.vds .field > span small { display: block; font-size: 11px; line-height: 14px; color: var(--ink-2); }
+/* .field's flex would otherwise override the hidden attribute. */
+.vds .field[hidden] { display: none; }
+.vds #siteDefault { min-height: 28px; }
+.vds #siteDefault small { flex: 1; font-size: 11px; line-height: 14px; color: var(--ink-2); }
+.vds .field input[type="text"], .vds .field input[type="number"], .vds .field select { height: 24px; border: 0; border-radius: 6px; padding: 0 8px; background: var(--print); color: #1C1705; font-size: 13px; }
+.vds .field input[type="text"] { width: 168px; }
+.vds .field input[type="number"] { width: 64px; text-align: right; font-variant-numeric: tabular-nums; }
+.vds .field select { min-width: 132px; }
+.vds .seg { display: flex; padding: 2px; border-radius: 8px; background: var(--hover); }
+.vds .seg label { height: 22px; padding: 0 10px; border-radius: 6px; display: flex; align-items: center; font-size: 12px; font-weight: 600; }
+.vds .seg input { position: absolute; opacity: 0; pointer-events: none; }
+.vds .seg label:has(input:checked) { background: var(--print); color: #1C1705; box-shadow: 0 1px 2px rgba(28, 23, 5, .2); }
+.vds .switch { position: relative; width: 32px; height: 20px; flex: none; }
+.vds .switch input { position: absolute; inset: 0; opacity: 0; margin: 0; }
+.vds .switch i { position: absolute; inset: 0; border-radius: 10px; background: var(--rule); transition: background 150ms; }
+.vds .switch i::after { content: ""; position: absolute; left: 2px; top: 2px; width: 16px; height: 16px; border-radius: 8px; background: var(--print); box-shadow: 0 1px 2px rgba(0, 0, 0, .3); transition: transform 150ms var(--spring); }
+.vds .switch input:checked + i { background: var(--ink); }
+.vds .switch input:checked + i::after { transform: translateX(12px); background: var(--field); }
+.vds details.advanced { margin: 24px 16px 0; }
+.vds details.advanced > summary { list-style: none; display: flex; align-items: center; gap: 6px; font-family: var(--display); font-stretch: 125%; font-weight: 700; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.vds details.advanced > summary::-webkit-details-marker { display: none; }
+.vds details.advanced textarea { width: 100%; margin-top: 6px; padding: 8px; border: 0; border-radius: 6px; background: var(--print); color: #1C1705; font: 12px/16px ui-monospace, "SF Mono", Menlo, monospace; resize: vertical; }
+.vds details.advanced label { display: block; margin-top: 12px; }
+.vds .saved { font-size: 11px; color: var(--ink-2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .vds *, .vds *::before { transition: none !important; }
+  .vds .go:active { transform: none; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .vds[data-theme="system"] {
+  --field: #231D09;
+  --field-deep: #2E260E;
+  --print: #EFE8D3;
+  --ink: #F7EBC0;
+  --ink-2: #CDBB82;
+  --ink-3: #9C8C57;
+  --rule: rgba(247, 235, 192, .16);
+  --hover: rgba(247, 235, 192, .08);
+  --negative: #F08A6E;
+  --btn: #F2C94C;
+  --btn-ink: #1C1705;
+  --band: #F2C94C;
+  --band-ink: #1C1705;
+  --band-ink-2: rgba(28, 23, 5, .78);
+  --band-accent: #1C1705;
+  --paper-shadow: 0 1px 0 rgba(0, 0, 0, .5), 0 10px 18px -12px rgba(0, 0, 0, .85);
+  --menu-shadow: 0 0 0 .5px rgba(0, 0, 0, .6), 0 12px 30px -6px rgba(0, 0, 0, .7);
+  }
+}
+
+/* ---- Views ---- */
+.vds .view { display: none; }
+.vds .view.active { display: block; }
+.vds #settingsView.active { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.vds[data-screen="settings"] .top, .vds[data-screen="settings"] .tabs, .vds[data-screen="settings"] .band { display: none; }
+.vds[data-screen="jobs"] .band { display: none; }
+.vds .hidden { display: none !important; }
+
+/* ---- Header menu and fixed menus ---- */
+.vds .more-menu { position: relative; }
+.vds .more-menu > summary { list-style: none; }
+.vds .more-menu > summary::-webkit-details-marker { display: none; }
+.vds .menu.is-fixed { position: fixed; }
+
+/* ---- Implementation details ---- */
+.vds .video.is-selected:focus-visible { outline-offset: 4px; }
+.vds .video.is-selected .print { max-height: 320px; }
+.vds .preview-click { pointer-events: auto; }
+.vds .empty .ctas { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.vds .empty .cta.is-quiet { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.vds .band { cursor: default; }
+.vds .band .band-open { position: absolute; inset: 0; border: 0; padding: 0; background: none; }
+.vds .band > :not(.band-open) { position: relative; pointer-events: none; }
+.vds .band > .ib { pointer-events: auto; }
+.vds .job .print.is-blank .img svg.i { width: 18px; height: 18px; }
+.vds .field select { appearance: auto; }
+.vds .field > .switch { flex: none; }
+.vds #jobsView.active { padding-top: 10px; }
+.vds .field-error { margin: 4px 0 0; font-size: 11px; color: var(--negative); }

@@ -1,0 +1,476 @@
+{
+  "builtBy": {
+    "message": "Built by"
+  },
+  "creatorX": {
+    "message": "Sebastian Bennis on X (opens in a new tab)"
+  },
+  "creatorGitHub": {
+    "message": "Sebastian Bennis on GitHub (opens in a new tab)"
+  },
+  "extensionName": {
+    "message": "VideoDownloadStudio"
+  },
+  "extensionDescription": {
+    "message": "Discover and save web media with local processing, clear controls, and no account."
+  },
+  "appName": {
+    "message": "VideoDownloadStudio"
+  },
+  "appDesc": {
+    "message": "Discover and save web media with local processing, clear controls, and no account."
+  },
+  "scan": {
+    "message": "Find Videos"
+  },
+  "media": {
+    "message": "On this page"
+  },
+  "jobs": {
+    "message": "Downloads"
+  },
+  "history": {
+    "message": "History"
+  },
+  "settings": {
+    "message": "Settings"
+  },
+  "scanCurrentPage": {
+    "message": "Find videos on this page"
+  },
+  "ready": {
+    "message": "Ready"
+  },
+  "discoveredMedia": {
+    "message": "On this page"
+  },
+  "allowThisSite": {
+    "message": "Allow This Site"
+  },
+  "allowAllWebsites": {
+    "message": "Allow All Websites…"
+  },
+  "mediaUrl": {
+    "message": "Video link"
+  },
+  "manualUrlPlaceholder": {
+    "message": "Paste a video link"
+  },
+  "add": {
+    "message": "Add"
+  },
+  "clear": {
+    "message": "Clear"
+  },
+  "concurrentDownloads": {
+    "message": "Downloads at once"
+  },
+  "historyDays": {
+    "message": "Keep history for"
+  },
+  "preferredHeight": {
+    "message": "Preferred quality"
+  },
+  "container": {
+    "message": "Format"
+  },
+  "defaultAction": {
+    "message": "Download button"
+  },
+  "downloadAudioVideo": {
+    "message": "Download audio & video"
+  },
+  "downloadAs": {
+    "message": "Download As…"
+  },
+  "downloadAudio": {
+    "message": "Download Audio"
+  },
+  "copyUrl": {
+    "message": "Copy URL"
+  },
+  "theme": {
+    "message": "Theme"
+  },
+  "system": {
+    "message": "Same as system"
+  },
+  "dark": {
+    "message": "Dark"
+  },
+  "light": {
+    "message": "Light"
+  },
+  "dock": {
+    "message": "Open as"
+  },
+  "popup": {
+    "message": "Popup"
+  },
+  "sidePanel": {
+    "message": "Side Panel"
+  },
+  "subdirectory": {
+    "message": "Folder in Downloads"
+  },
+  "namingRules": {
+    "message": "File naming rules (JSON)"
+  },
+  "customLabelTranslations": {
+    "message": "Custom labels (JSON)"
+  },
+  "desktopNotifications": {
+    "message": "Tell me when a download finishes"
+  },
+  "saveSettings": {
+    "message": "Done"
+  },
+  "download": {
+    "message": "Download"
+  },
+  "downloadas": {
+    "message": "Download As…"
+  },
+  "downloadaudio": {
+    "message": "Download Audio"
+  },
+  "copyurl": {
+    "message": "Copy URL"
+  },
+  "downloadAudioAndVideoMenu": {
+    "message": "Download Audio & Video"
+  },
+  "downloadAsMenu": {
+    "message": "Download As…"
+  },
+  "alwaysDownloadAs": {
+    "message": "Always Download As…"
+  },
+  "alwaysAudioOnlyWebsite": {
+    "message": "Always Audio Only for This Website"
+  },
+  "alwaysCopyUrl": {
+    "message": "Always Copy URL"
+  },
+  "smartnaming": {
+    "message": "Smartnaming…"
+  },
+  "details": {
+    "message": "Details"
+  },
+  "preview": {
+    "message": "Preview"
+  },
+  "noJobs": {
+    "message": "Nothing downloading"
+  },
+  "noJobsBody": {
+    "message": "Videos you save appear here, with their progress."
+  },
+  "noSavedHistory": {
+    "message": "No saved history"
+  },
+  "noSavedHistoryBody": {
+    "message": "History is off. Turn it on in Settings to keep a list of saved files."
+  },
+  "extractingFormats": {
+    "message": "Reading formats from YouTube"
+  },
+  "extractingFormatsBody": {
+    "message": "Keep the video tab open. This takes a few seconds."
+  },
+  "noVerifiedYouTubeFormats": {
+    "message": "No verified YouTube formats"
+  },
+  "noVerifiedYouTubeFormatsBody": {
+    "message": "The extractor could not resolve downloadable formats for this video."
+  },
+  "searchingTitle": {
+    "message": "Looking for videos"
+  },
+  "searchingBody": {
+    "message": "Videos on {host} appear here in a few seconds."
+  },
+  "dockPopupNext": {
+    "message": "Saved. The toolbar button now opens a popup."
+  },
+  "dockSidePanelNext": {
+    "message": "Saved. The toolbar button now opens the side panel."
+  },
+  "subdirectoryHelp": {
+    "message": "Leave empty to save straight to Downloads"
+  },
+  "subdirectoryPlaceholder": {
+    "message": "None"
+  },
+  "siteDefaultNote": {
+    "message": "On {host}: {action}"
+  },
+  "siteDefaultReset": {
+    "message": "Reset"
+  },
+  "alwaysDownloadAudioAndVideo": {
+    "message": "Always Download Audio & Video"
+  },
+  "dockHelp": {
+    "message": "What the toolbar button opens"
+  },
+  "noMediaYet": {
+    "message": "No videos found yet"
+  },
+  "noMediaYouTubeBody": {
+    "message": "Open a video page, then click Find Videos."
+  },
+  "noMediaBody": {
+    "message": "Start the video playing, then click Find Videos. Some sites only load video when it plays."
+  },
+  "preparingPreview": {
+    "message": "Preparing preview"
+  },
+  "previewFailed": {
+    "message": "Preview failed"
+  },
+  "previewTooLarge": {
+    "message": "Too long to preview. Download it to watch."
+  },
+  "siteAllowed": {
+    "message": "Allowed on {host}"
+  },
+  "filename": {
+    "message": "File name"
+  },
+  "format": {
+    "message": "Quality"
+  },
+  "downloadOptions": {
+    "message": "More ways to save"
+  },
+  "audioVideo": {
+    "message": "Audio + video"
+  },
+  "findAgain": {
+    "message": "Find Videos Again"
+  },
+  "scanAgain": {
+    "message": "Find videos on this page again"
+  },
+  "scanStarted": {
+    "message": "Looking for videos. Start the video if nothing appears."
+  },
+  "scanYouTubeStarted": {
+    "message": "Reading formats from YouTube. They appear here when ready."
+  },
+  "more": {
+    "message": "More"
+  },
+  "pasteLinkMenu": {
+    "message": "Paste a Link…"
+  },
+  "settingsMenu": {
+    "message": "Settings…"
+  },
+  "grantAllDenied": {
+    "message": "Chrome did not grant access to all websites."
+  },
+  "grantAllDone": {
+    "message": "All websites allowed, for videos served from other domains."
+  },
+  "notificationsDenied": {
+    "message": "Chrome did not grant notification permission."
+  },
+  "done": {
+    "message": "Done"
+  },
+  "saved": {
+    "message": "Saved"
+  },
+  "saving": {
+    "message": "Saving"
+  },
+  "containerHelp": {
+    "message": "For converted streams. Long HLS saves keep their native format."
+  },
+  "whenIClickDownload": {
+    "message": "When I click Download"
+  },
+  "defaultActionDownload": {
+    "message": "Saves video and sound"
+  },
+  "defaultActionDownloadAs": {
+    "message": "Asks where to save"
+  },
+  "defaultActionAudio": {
+    "message": "Saves sound only"
+  },
+  "defaultActionCopy": {
+    "message": "Copies the link"
+  },
+  "lookAndHistory": {
+    "message": "Look and history"
+  },
+  "historyDaysHelp": {
+    "message": "0 keeps nothing"
+  },
+  "days": {
+    "message": "days"
+  },
+  "advanced": {
+    "message": "Advanced"
+  },
+  "translationsInvalid": {
+    "message": "Custom labels must be a JSON object of label keys and text."
+  },
+  "namingInvalid": {
+    "message": "File naming rules are not valid."
+  },
+  "alsoOnThisPage": {
+    "message": "Also on this page"
+  },
+  "earlier": {
+    "message": "Earlier"
+  },
+  "clearHistory": {
+    "message": "Clear History"
+  },
+  "historyOff": {
+    "message": "History is off. Turn it on in Settings to keep a list of saved files."
+  },
+  "showDownloads": {
+    "message": "Show Downloads"
+  },
+  "showOptions": {
+    "message": "Show options"
+  },
+  "untitled": {
+    "message": "Untitled media"
+  },
+  "filenameHelp": {
+    "message": "Click to rename the file"
+  },
+  "makeDefault": {
+    "message": "Make it the default"
+  },
+  "copyPageUrl": {
+    "message": "Copy Page URL"
+  },
+  "defaultSaved": {
+    "message": "Default saved."
+  },
+  "portrait": {
+    "message": "portrait"
+  },
+  "noSound": {
+    "message": "no sound"
+  },
+  "audioOnly": {
+    "message": "Audio only"
+  },
+  "original": {
+    "message": "Original"
+  },
+  "moreDownloading": {
+    "message": "{count} more"
+  },
+  "etaUnderMinute": {
+    "message": "under a minute left"
+  },
+  "etaMinutes": {
+    "message": "about {n} min left"
+  },
+  "etaHours": {
+    "message": "about {n} h left"
+  },
+  "phaseQueued": {
+    "message": "Waiting to start"
+  },
+  "phasePreparing": {
+    "message": "Getting ready"
+  },
+  "phaseDownloading": {
+    "message": "Developing"
+  },
+  "phaseProcessing": {
+    "message": "Putting it together"
+  },
+  "phaseSaving": {
+    "message": "Saving"
+  },
+  "phaseCompleted": {
+    "message": "Saved"
+  },
+  "phaseFailed": {
+    "message": "Stopped"
+  },
+  "phaseInterrupted": {
+    "message": "Interrupted"
+  },
+  "phaseCancelled": {
+    "message": "Cancelled"
+  },
+  "cancel": {
+    "message": "Cancel"
+  },
+  "stop": {
+    "message": "Stop and Save"
+  },
+  "stopHelp": {
+    "message": "Stop recording and save what has downloaded"
+  },
+  "retry": {
+    "message": "Try Again"
+  },
+  "reveal": {
+    "message": "Show in Folder"
+  },
+  "revealMac": {
+    "message": "Show in Finder"
+  },
+  "stoppedAt": {
+    "message": "Stopped at {percent}%."
+  },
+  "bytesOf": {
+    "message": "{done} of {total}"
+  },
+  "bytesSoFar": {
+    "message": "{done} so far"
+  },
+  "savedAt": {
+    "message": "saved"
+  },
+  "sound": {
+    "message": "Sound"
+  },
+  "yesterday": {
+    "message": "Yesterday"
+  },
+  "downloadProgress": {
+    "message": "Download progress"
+  },
+  "openWebPage": {
+    "message": "Open a web page"
+  },
+  "openWebPageBody": {
+    "message": "VideoDownloadStudio finds videos on web pages. Open one, then come back here."
+  },
+  "findTitle": {
+    "message": "Find the videos on this page."
+  },
+  "findBody": {
+    "message": "VideoDownloadStudio needs permission to read {host}. Files are made on your computer; nothing is uploaded."
+  },
+  "protectedTitle": {
+    "message": "This video is protected"
+  },
+  "protectedSiteBody": {
+    "message": "{site} encrypts its videos with DRM, so they cannot be saved. VideoDownloadStudio does not remove copy protection."
+  },
+  "protectedBody": {
+    "message": "This page plays its video with DRM encryption, so it cannot be saved. VideoDownloadStudio does not remove copy protection."
+  },
+  "protectedLabel": {
+    "message": "Protected"
+  },
+  "protectedHelp": {
+    "message": "This video is encrypted with DRM, so it cannot be saved."
+  }
+}
